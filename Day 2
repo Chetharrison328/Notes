@@ -1,1 +1,18 @@
+# Linux Notes: vi editor, vi vs. vim editor
 
+## Key Differences:
+- vi: Minimal, always available on Linux.
+- VIM: VI Improved, with more features
+
+## Commands Practiced:
+- Insert mode:(When you want to insert text) "i"
+- Save & quit/Save & quit w/o saving: ":wq!", ":q!"
+- New Line: "o" (When you want to create a new line below your text), "O" (When you want to create a new line above your text)
+- Delete:(When you want to delete a line of text) "dd" or "x" (When you want to delete 
+- Copy/Paste: "yy", "p"
+- Search:(When you want to search a word/letter) "/", example: "/Pattern"
+- Navigation:(You can use your arrow keys) "h", "j", "k", "l"
+
+## Observations
+- I noticed no differences between using the vi and vim editors in this session. A simple Google search brought up more advanced feature sets of the Vim editor apart from vi.
+- Learned a ton of commands when working in both editors, how to move efficiently, search, and edit cleanly. 
