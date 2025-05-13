@@ -12,6 +12,7 @@
 - Copy/Paste: "yy", "p"
 - Search:(When you want to search a word/letter) "/", example: "/Pattern"
 - Navigation:(You can use your arrow keys) "h", "j", "k", "l"
+- Undo:(accidentally deleted a line of text or word) "u"
 
 ## Observations
 - I noticed no differences between using the vi and vim editors in this session. A simple Google search brought up more advanced feature sets of the Vim editor apart from vi.
