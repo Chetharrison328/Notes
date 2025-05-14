@@ -1,1 +1,40 @@
+# Day 3 - sed command & user management
 
+## Summary 
+
+Today I learned how to use the 'sed' command & saw how the command can manipulate texts in files. 
+I also learned how to manage user & group accounts in Linux using built-in commands.
+Today, I saw that these core system administration skills are useful. Plus, they're useful for log management, config edits, and user access control.
+
+## sed Commands
+
+1. sed 's/name//g' filename
+What it does: Removes every instance of the word "name" from a file but does not modify the file permanently.
+
+sed -i 's/name//g' filename -> adding the "-i" to the command will modify the file permanently.
+
+2. sed '/name/d' filename
+What it does: Deletes any line that contains "name" 
+
+3. sed '/^$/d' filename 
+What it does: Deletes empty lines from a file.
+
+## User & Group Management Commands (You can only do these commands if you use sudo or sign in as root)
+
+1. useradd username -> create a user
+2. userdel username -> delete a user
+3. usermod -G groupname username -> modify a user
+4. groupadd groupname -> create a group
+5. groupdel groupname -> delete a group
+
+## Important System Files
+
+- /etc/passwd - Stores basic user account information.
+- /etc/shadow - Stores encrypted passwords.
+- /etc/group - Stores group information.
+
+Note: All of these commands require root access or sudo privileges. 
+
+Reflection: 
+
+I practiced sed commands with & without -i to understand the difference between testing and making real changes. I now understand how to manipulate text files and manage users on a basic level, which are key Linux administration skills.
