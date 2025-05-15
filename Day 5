@@ -1,0 +1,74 @@
+# Day 6 – Linux Directory Services, System Utilities & Processes
+
+## 1. What I Learned
+
+### Linux Directory Services & Authentication
+- **Local Accounts**: Stored directly on the system.
+- **Domain/Directory Accounts**: Authenticated using external services.
+- **LDAP**: Lightweight Directory Access Protocol – open standard used across OSes.
+- **Active Directory**: Microsoft’s centralized directory service.
+- **WinBind**: Allows Linux to communicate with Active Directory via Samba.
+- **OpenLDAP**: Open-source LDAP used for directory services in Linux environments.
+- **Identity Management Examples**: JumpCloud, IBM Directory Server, Red Hat IDM.
+
+---
+
+### System Utility Commands
+| Command     | Description                                  |
+|-------------|----------------------------------------------|
+| `date`      | Displays current date and time               |
+| `uptime`    | Shows how long the system has been running   |
+| `hostname`  | Displays or sets the system hostname         |
+| `uname`     | Displays system and kernel information       |
+| `which`     | Shows path of executable in use              |
+| `cal`       | Prints a calendar                            |
+| `bc`        | Command-line calculator                      |
+
+---
+
+### Processes and Jobs (Introduction)
+- **Process**: An executing program or script.
+- **Daemon**: Background process that runs continuously (e.g., sshd).
+- **Script**: A series of commands for automation.
+- **Job**: A scheduled or background task.
+- **Thread**: A lightweight process within a process.
+
+---
+
+### Important Commands (Deeper Dive Coming Later)
+- `systemctl`: Manages services and processes (start, stop, restart).
+- `ps`: Views currently running processes (snapshot).
+- `top`: Live view of running processes and system resources.
+- `kill`: Sends signal to processes to terminate or restart.
+- `crontab`: Manages scheduled recurring tasks.
+- `at`: Schedules one-time tasks.
+
+---
+
+## 2. Questions I Had
+- In what situations would a company choose OpenLDAP over Active Directory?
+- Is there an advantage of using JumpCloud over more traditional directory services?
+
+---
+
+## 3. How Things Connected
+- This tied into everything I’ve learned about user accounts (`/etc/passwd`, `/etc/group`, etc.).
+- Utility tools like `uptime`, `date`, and `hostname` are essential for real-world ticket troubleshooting.
+- Managing processes connects directly with scripting and automation.
+
+---
+
+## 4. What I Needed to Try Next
+- Run and test `systemctl`, `ps`, `top`, and `kill` commands on my VM.
+- Practice setting up a `crontab` and `at` job.
+- Use utility commands (`which`, `uname`, `uptime`, `date`) to simulate troubleshooting steps.
+
+---
+
+## 5. Real-World Application / Use Case
+- Helpdesk or Linux admin roles would expect me to:
+  - Integrate servers into an AD or LDAP system.
+  - Monitor and restart services using `systemctl`.
+  - Schedule regular tasks using `crontab` (like log cleanup or backups).
+  - Identify and stop frozen or problematic processes with `top` and `kill`.
+  - Use tools like `uptime`, `date`, and `hostname` for quick system diagnostics.
