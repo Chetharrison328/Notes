@@ -1,0 +1,62 @@
+## Day 4 - Linux User & Privilege Mangement
+
+## 1. /etc/login.defs - Password Policy Configuration 
+Controls password aging policies and user account default settings.
+
+- PASS_MAX_DAYS: Maximum number of days a password is valid.
+- PASS_MIN_DAYS: Minimum number of days allowed between password changes.
+- PASS_MIN_LEN: Mininmum length of an acceptable password.
+- PASS_WARN_AGE: Number of days warning given before password expiration.
+
+## 2 'chage' - Mange Password Aging & Expiry
+Used to view or modify password aging for user accounts.
+
+### Common Flags: 
+- '-l': List password aging info
+- '-m': Minimum days between password changes 
+- '-M': Maximum days password is valid
+- '-W': Warning days before expiration
+- '-I': Inactive days after expiration
+- '-E': Account expiration date 
+
+### EXAMPLE: 
+
+chage -M 90 username         # Max age = 90 days 
+chage -m 7 username          # Min age = 7 days
+chage -W 10 username         # Warn 10 days before expiration
+chage -I 5 username          # Inactive after 5 days
+chage -E 2025-12-31 user     # Expire account on Dec 31, 2025
+
+## 3. /etc/shadow - Secure User Password File 
+
+- Stores hashed passwords and aging values.
+- Use grep username /etc/shadow to review settings
+
+## 4. su vs sudo
+
+-su: switch user (usually to root). Requires root password.
+-sudo: Run commands with elevated priveleges. Safer and more auditable.
+
+## 5. visudo - safely edit/etc/sudoers
+
+- Prevents syntax errors that could break root access.
+- Use visudo instead of editing /etc/sudoers directly
+
+## System Info Command 
+
+- dmidecode: View detailed system hardware info (BIOS,CPU, etc). Requires root.
+
+## Monitoring Users:
+
+- who: See logged-in users
+- w: See what users are doing
+- last: View login history
+Use last | more - for a one page output
+- id username: see UID,GID and groups
+- pinky: gives you light detailed user info
+
+Messaging & Communications
+
+- users: Show username of currently logged-in users
+- write username: Send message to a specific user
+- wall: Broadcast message to all users
