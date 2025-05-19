@@ -1,6 +1,6 @@
-# 📘 System & Process Management Commands  
+# System & Process Management Commands  
 **Date:** 2025-05-18  
-**Checkpoint:** Daily Linux Roadmap - Day XX  
+**Checkpoint:** Daily Linux Roadmap - Day 6 
 
 ---
 
@@ -60,7 +60,7 @@
 
 ## 2. Questions I Had  
 - When should I use `kill -9` vs `kill -15`?  
-- What does each column in `top` mean in relation to performance?  
+- What does each column in `top` mean concerning performance?  
 - Can I use a script to monitor and restart a service automatically?
 
 ---
