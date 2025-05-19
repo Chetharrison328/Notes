@@ -1,0 +1,92 @@
+# 📘 System & Process Management Commands  
+**Date:** 2025-05-18  
+**Checkpoint:** Daily Linux Roadmap - Day XX  
+
+---
+
+## 1. What I Learned
+
+### `systemctl` – Manage systemd services  
+- `systemctl start|stop|status <servicename>.service`  
+- `systemctl enable|disable <servicename>.service`  
+- `systemctl restart|reload <servicename>.service`  
+- `systemctl list-units --all`  
+  - **Output columns:** UNIT, LOAD, ACTIVE, SUB, DESCRIPTION
+
+---
+
+### `firewalld` – Firewall service management  
+- Enable: `systemctl enable firewalld`  
+- Disable: `systemctl disable firewalld`  
+- Check status: `systemctl status firewalld`  
+
+---
+
+### `ps` – Process status  
+- `ps` → Shows current shell processes  
+- `ps -e` → Shows all running processes  
+- `ps aux` → BSD format  
+- `ps -ef` → Full format (commonly used)  
+- `ps -u <username>` → Shows all processes by a user  
+- **Columns:** PID, TTY, TIME, CMD  
+
+---
+
+### `top` – Real-time process viewer  
+- `top` → Shows live system usage (refreshes every 3 seconds)  
+- Press `c` → Show full command path  
+- Press `k` → Kill process by PID  
+- Press `M` → Sort by memory usage  
+- Press `P` → Sort by CPU usage  
+- `top -u <username>` → Filter processes by user  
+
+---
+
+### `kill` – Terminate processes manually  
+- Syntax: `kill [OPTION] [PID]`  
+- `kill -l` → List all signals  
+
+**Most common signals:**  
+- `kill -1` → Restart process  
+- `kill -2` → Interrupt (like Ctrl+C)  
+- `kill -9` → Force kill  
+- `kill -15` → Graceful termination  
+
+**Other commands:**  
+- `killall <name>` → Kill by name  
+- `pkill <name>` → Kill by pattern  
+
+---
+
+## 2. Questions I Had  
+- When should I use `kill -9` vs `kill -15`?  
+- What does each column in `top` mean in relation to performance?  
+- Can I use a script to monitor and restart a service automatically?
+
+---
+
+## 3. How Things Connected  
+- **Everything in Linux is a process**: scripts, services, daemons.  
+- `systemctl` handles services, which are background processes.  
+- `top` and `ps` help diagnose performance issues and bottlenecks.  
+- `kill`, `killall`, and `pkill` are tools for manual intervention.  
+- Mastering these makes you effective at monitoring and troubleshooting production systems.
+
+---
+
+## 4. What I Need to Try Next (Hands-On Practice)
+
+🛠 **Practice Scenarios:**
+1. Start and stop the `firewalld` service. Check its status.
+2. Use `ps -ef` to find your terminal’s shell PID.
+3. Launch a background process: `sleep 1000 &`, then find and kill it using `kill`.
+4. Use `top`, press `M`, `P`, `k`, and `c` to explore process details.
+5. Use `pkill` and `killall` to terminate the same test process.
+
+---
+
+## 5. Real-World Application / Use Case  
+- Restart stuck services or kill runaway processes on production servers.  
+- Use `top` and `ps` to track memory or CPU hogs.  
+- Build scripts for auto-restarting critical services using these commands.  
+- Prepares you for real-world SysAdmin/DevOps environments and job interviews.
