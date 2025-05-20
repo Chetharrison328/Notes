@@ -20,12 +20,12 @@ Used to send control messages to running processes.
 
 | Signal      | Meaning                          | Common Command Used             |
 |-------------|----------------------------------|----------------------------------|
-| `SIGINT`    | Interrupt process                | `Ctrl + C`, `kill -2 PID`       |
-| `SIGTERM`   | Politely ask process to stop     | `kill -15 PID`                  |
-| `SIGKILL`   | Forcefully kill process          | `kill -9 PID`                   |
-| `SIGSTOP`   | Pause/suspend process            | `kill -19 PID`                  |
-| `SIGCONT`   | Resume a stopped process         | `kill -18 PID`                  |
-| `SIGSEGV`   | Segmentation fault (invalid mem) | Automatically triggered error   |
+| `SIGINT`    | Interrupt process                | `kill -SIGNIT PID`                   |
+| `SIGTERM`   | Politely ask process to stop     | `kill -SIGTERM PID`                  |
+| `SIGKILL`   | Forcefully kill process          | `kill -SIGKILL PID`                  |
+| `SIGSTOP`   | Pause/suspend process            | `kill -SIGSTOP PID`                  |
+| `SIGCONT`   | Resume a stopped process         | `kill -SIGCONT PID`                  |
+| `SIGSEGV`   | Segmentation fault (invalid mem) | `kill -SIGSEGV PID`                  |
 
 #### 2. **Real-Time Signals**
 
