@@ -1,1 +1,166 @@
+# Daily Notes: Process Signals, Crontab, At Command, Cron Job Types (May 20, 2025)
 
+---
+
+## 1. What I Learned
+
+### Process vs Signal (in Linux)
+
+- **Process:** A running program (with its own PID)
+- **Signal:** A short message sent to a process (to communicate, control, or interrupt)
+
+**  Combined → Process Signals:**  
+Used to send control messages to running processes.
+
+---
+
+###   Two Types of Process Signals:
+
+#### 1. **Standard Signals (Predefined)**
+
+| Signal      | Meaning                          | Common Command Used             |
+|-------------|----------------------------------|----------------------------------|
+| `SIGINT`    | Interrupt process                | `Ctrl + C`, `kill -2 PID`       |
+| `SIGTERM`   | Politely ask process to stop     | `kill -15 PID`                  |
+| `SIGKILL`   | Forcefully kill process          | `kill -9 PID`                   |
+| `SIGSTOP`   | Pause/suspend process            | `kill -19 PID`                  |
+| `SIGCONT`   | Resume a stopped process         | `kill -18 PID`                  |
+| `SIGSEGV`   | Segmentation fault (invalid mem) | Automatically triggered error   |
+
+#### 2. **Real-Time Signals**
+
+- Carry additional data
+- Are queued
+- Can be customized
+
+| Signal        | Function                                      |
+|---------------|-----------------------------------------------|
+| `SIGRTMIN`    | Start of real-time signal range               |
+| `SIGRTMAX`    | End of real-time signal range                 |
+| Intermediate  | Custom signals between `SIGRTMIN` & `SIGRTMAX` |
+
+---
+
+## 2. Questions I Had
+
+- Difference between `SIGTERM` and `SIGKILL`  
+  → Answer: `SIGTERM` allows process to clean up, `SIGKILL` doesn’t.
+
+- What makes real-time signals "real-time"?  
+  → They can be queued and carry additional data.
+
+---
+
+## 3. How Things Connected
+
+- **Signals** are key to controlling **running processes**
+- Learning standard signals helped me understand how `kill`, `ps`, `top` are used in real-world
+- Real-time signals introduced the concept of **custom signal handling**, which ties into **scripting and automation**
+
+---
+
+## 4. What I Need to Try Next
+
+- Write a Bash script that traps signals like `SIGINT` or `SIGTERM`
+- Try sending real-time signals with custom values
+- Explore `trap` command to intercept signals
+- Practice combining `ps aux`, `grep`, and `kill` in troubleshooting scenarios
+
+---
+
+## 5. Real-World Application / Use Case
+
+- Use `SIGTERM` to safely stop running services during deployment or updates
+- Use `SIGKILL` if a process becomes unresponsive
+- Real-time signals are used in high-performance applications (e.g., robotics, trading systems)
+- Signals are crucial in **system admin**, **DevOps**, **automation scripts**, and **debugging**
+
+---
+
+#   Scheduled Jobs in Linux
+
+---
+
+## 1. What I Learned
+
+###  Crontab
+
+Used to **schedule recurring jobs**.
+
+| Command        | Function                              |
+|----------------|----------------------------------------|
+| `crontab -e`   | Edit crontab                           |
+| `crontab -l`   | List entries                           |
+| `crontab -r`   | Remove crontab                         |
+| `crond`        | Crontab service                        |
+| `systemctl status crond` | Manage/view crond status     |
+
+**Crontab Time Format:**
+
+- Day of Week (0-7,Sunday = 0 or 7)
+   - Month (1-12) 
+     - Day of Month (1-31) 
+       - Hour (0 - 23) 
+         - Minute (0 - 59) 
+
+---
+
+###  at Command
+
+Used to schedule **one-time jobs**
+
+| Command           | Function                                 |
+|-------------------|-------------------------------------------|
+| `at HH:MM`        | Schedule a job at a specific time         |
+| `atq`             | View queued jobs                          |
+| `atrm [job#]`     | Remove job from queue                     |
+| `systemctl status atd` | Check `at` daemon status            |
+
+To exit the `at>` prompt, press `Ctrl + D`.
+
+---
+
+###   Four Additional Cron Job Types
+
+- Setup in `/etc/cron.{hourly,daily,weekly,monthly}` directories
+
+| Type       | Config Location             | Timing Config File                |
+|------------|------------------------------|------------------------------------|
+| Hourly     | `/etc/cron.hourly/`         | `/etc/cron.d/0hourly`              |
+| Daily      | `/etc/cron.daily/`          | `/etc/anacrontab`                  |
+| Weekly     | `/etc/cron.weekly/`         | `/etc/anacrontab`                  |
+| Monthly    | `/etc/cron.monthly/`        | `/etc/anacrontab`                  |
+
+---
+
+## 2. Questions I Had
+
+- How do I use `at` interactively?
+  → Run `at HH:MM`, enter commands, press `Ctrl + D` to submit
+
+- What’s the difference between `at` and `cron`?
+  → `cron` is recurring, `at` is one-time
+
+---
+
+## 3. How Things Connected
+
+- `cron` and `at` are the **backbone of task automation**
+- `crond` and `atd` are **services** managing these jobs — so `systemctl` fits into all of this
+- Learning scheduling pairs perfectly with `logging`, `alerting`, and `monitoring` later in DevOps
+
+---
+
+## 4. What I Need to Try Next
+
+- Schedule a real job using `at` that echoes a log message
+- Create crontab entries to run basic scripts at set intervals
+- Explore system-wide cron jobs and permissions
+
+---
+
+## 5. Real-World Application / Use Case
+
+- Use `cron` for **log rotation**, **backups**, **health checks**
+- Use `at` for **one-time tasks** like **scheduled reboots**, **delayed installs**
+- Combine with scripts to create **automated server maintenance plans**
