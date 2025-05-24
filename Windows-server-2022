@@ -1,0 +1,104 @@
+# Windows Server 2022 - Lessons 1 & 2
+
+## What I Learned
+
+### Windows Server 2022 Editions
+
+- **Essentials**  
+  - For small businesses (≤ 25 users & 50 devices)  
+  - Limited functionality, simple deployment  
+  - No virtualization rights
+
+- **Standard**  
+  - For physical or lightly virtualized environments  
+  - Includes **2 virtual machine licenses**
+
+- **Datacenter**  
+  - For **highly virtualized environments** (e.g., data centers)  
+  - Includes **unlimited VM licenses**
+
+- **Azure Edition**  
+  - Used when running Windows Server 2022 as a **virtual machine in Azure**  
+  - Supports unique Azure-only features
+
+---
+
+### Hyper-V Overview
+
+- **Hyper-V** is a **native hypervisor** for creating and managing virtual machines.
+- The **2019 Hyper-V Server** was the last standalone version with:
+  - No GUI
+  - No roles or features besides VM hosting
+
+---
+
+###  Azure-Specific Features (Only in Azure Edition)
+
+- **Azure Automanage - Hotpatch**  
+  → Installs OS updates **without requiring reboots** on Azure VMs
+
+- **SMB over QUIC (Quick UDP Internet Connections)**  
+  → Encrypts file shares using UDP instead of traditional TCP  
+  → More secure and firewall-friendly for remote access
+
+- **Extended Network for Azure**  
+  → Allows on-prem VMs to **retain private IP addresses** when migrated to Azure  
+  → Enables seamless hybrid cloud networking
+
+---
+
+###  Minimum Hardware Requirements
+
+| Component       | Requirement                       |
+|----------------|------------------------------------|
+| CPU             | 64-bit, 1.4 GHz                   |
+| RAM             | 512MB minimum (2GB for GUI)       |
+| Storage         | 32GB minimum                      |
+| Network         | 1 Gbps throughput NIC             |
+
+---
+
+###  Deployment Options
+
+- **Clean Install**: Fresh install on new system
+- **In-Place Upgrade**: Retain data/configs while upgrading existing OS
+
+---
+
+###  Additional Concepts
+
+- **Servicing Channels**: Determines how long updates/support last (LTSC = Long-Term Servicing Channel)
+- **Licensing/Activation**: Tied to edition and virtualization rights
+
+---
+
+##  Questions I Had
+
+- How often is **Hotpatching** used in enterprise Azure environments?
+- Are there limitations to **Extended Network** when scaling a hybrid infrastructure?
+- What is the **real-world impact** of using Core vs Desktop Experience in day-to-day admin work?
+
+---
+
+##  How Things Connected
+
+- The editions and hardware requirements help determine **deployment planning**
+- Azure-specific features like **Hotpatching** & **Extended Networking** directly tie into **hybrid identity** work in **Azure IAM**
+- Core vs Desktop Experience teaches you how to balance **security and management style**
+
+---
+
+##  What I Need to Try Next
+
+- Set up **two Windows Server 2022 VMs** — one with Core, one with Desktop Experience
+- Compare GUI vs PowerShell management
+- Test Hyper-V role installation on local machine or lab VM
+
+---
+
+##  Real-World Application / Use Case
+
+- Understanding editions and deployment options is critical when:
+  - Creating Active Directory environments
+  - Building hybrid cloud (Azure + on-prem) networks
+  - Working as an IAM engineer where **VM provisioning**, **policy enforcement**, and **server architecture** all 
