@@ -1,0 +1,54 @@
+#   Active Directory Domain Services (AD DS)
+Module: Overview of AD DS | Workgroups vs Domains | Domain Controllers | User & Group   
+
+---
+
+##   What I Learned
+
+- The difference between **Workgroups** and **Domains** (types of network models)
+- Core concepts of **Active Directory Domain Services (AD DS)**
+- Logical and physical components of Active Directory
+- Key AD objects: users, groups, computers
+- How to install AD DS and promote a server to a domain controller
+- How to create users and groups using Active Directory Users & Computers
+
+---
+
+##   Questions I Had
+
+- When should I use an OU vs a security group?
+- What are some real-world examples of forests vs domain trees?
+- How is a Read-Only Domain Controller (RODC) secured in a branch office setup?
+- How do domain trusts work across forests?
+
+---
+
+##   How Things Connected
+
+- **Workgroup vs Domain** helped explain why centralized identity is critical in enterprise environments.
+- **Domain Controllers** tie into centralized authentication and **Group Policy**, forming the backbone of enterprise security.
+- **Logical vs Physical components** helped me understand how design and infrastructure align.
+- Installing AD DS made the abstract terms (like "forest" and "object") more practical and visible in real tools.
+- Creating users and groups showed how **IAM starts at the OS-level** before scaling into cloud IAM tools like Entra ID.
+
+---
+
+##   What I Need to Try Next
+
+- Build a mini lab to:
+  - Create a new domain in VirtualBox/Hyper-V
+  - Add multiple users and organize them into OUs and groups
+  - Test permission delegation with Group Policy
+- Document the forest/domain structure visually
+- Practice with Read-Only Domain Controller setup
+- Compare AD DS to Microsoft Entra ID (formerly Azure AD) to see differences/similarities
+
+---
+
+##  Real-World Application / Use Case
+
+- **Workgroups** are great for small businesses with <10 PCs, but **Domains** are required for scalable, secure enterprise setups.
+- Every corporate environment uses **AD DS or Entra ID** to handle authentication, making this foundational for **IAM engineering**.
+- Understanding **users, groups, and policies** in AD is a direct precursor to managing **cloud-based IAM tools**.
+- **Domain Controllers** are a real-world example of centralized IAM systems that mirror how modern tools like Entra, Okta, and CyberArk work.
+- These skills apply to IT support, sysadmin, security analyst, and IAM engineer roles.
