@@ -1,1 +1,77 @@
+# Lesson 4 – Group Policy Objects (GPOs)
 
+## 1. What I Learned
+
+### Group Policy Overview:
+- Group Policy is a powerful administrative tool with over **3,500+ settings**.
+- GPOs are used to enforce policies across many users and computers.
+- Common uses:
+  - Apply security settings
+  - Manage desktop application settings
+  - Deploy application software
+  - Configure network settings
+  - Manage folder redirection
+
+### Domain-Based GPOs:
+- Two default GPOs are automatically created:
+  - **Default Domain Policy**
+  - **Default Domain Controllers Policy**
+
+### Group Policy Preferences:
+- Preferences are **client-side extensions** that allow more flexible control.
+- Difference from policy settings:
+  - **Preferences** = allow user override
+  - **Policies** = enforced, no override
+- Can target preferences by: Group, OS, IP, MAC address, etc.
+
+### Group Policy Scope & Inheritance:
+- GPOs are processed in this order:
+  1. **Local GPOs** (`gpedit.msc`)
+  2. **Site-level GPOs** (based on physical site)
+  3. **Domain-level GPOs**
+  4. **Organizational Unit (OU) GPOs**
+
+- Processing order can be changed using:
+  - **Block inheritance**
+  - **Enforced**
+  - **Security filtering**
+
+### GPUpdate:
+- `gpupdate` is a CLI tool that refreshes Group Policy.
+- `gpupdate /force` re-applies all policies, even unchanged ones.
+
+### GPResult:
+- `gpresult` helps verify which GPOs are applied to a user or computer.
+- Useful for troubleshooting and auditing settings.
+
+---
+
+## 2. Questions I Had
+
+- Are group policy preferences supported on all Windows OS versions?
+- When should I use `gpupdate` vs simply rebooting a client system?
+- How often do GPOs refresh automatically in domain environments?
+
+---
+
+## 3. How Things Connected
+
+- The inheritance order of GPOs connects to how **OUs are structured**, showing how layered policies can affect users differently.
+- Understanding `gpupdate` and `gpresult` gives me direct troubleshooting tools to validate GPO effectiveness — great for real-world admin work.
+- Knowing the difference between preferences and policies helps avoid misconfiguring settings that users need to control.
+
+---
+
+## 4. What I Need to Try Next
+
+- Practice running `gpupdate /force` and `gpresult /r` on my virtual lab machines.
+- Create custom GPOs and apply them to OUs in my domain.
+- Use preferences to test targeting settings based on IP or OS type.
+
+---
+
+## 5. Real-World Application / Use Case
+
+- IT Admins apply GPOs to enforce **password complexity rules**, **lock screen timeouts**, or **restrict software installations** across an enterprise.
+- Helpdesk teams use `gpresult` to verify if user complaints (e.g., settings not applying) are due to missing GPOs or improper scoping.
+- Preferences are used in dynamic environments to apply non-critical settings like **mapped drives** or **custom shortcuts** that users can change if needed.
