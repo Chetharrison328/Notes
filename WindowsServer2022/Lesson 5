@@ -1,1 +1,95 @@
+# Lesson 5 – Least Privilege, Admin Tools, PowerShell, and RSAT
 
+## 1. What I Learned
+
+### Least-Privilege Administration:
+- **Least privilege** means users only get access to the resources they need to perform their jobs—nothing more.
+- Important for reducing attack surfaces and insider threats.
+
+### Delegated Privileges:
+- High-privileged groups include **Enterprise Admins** and **Domain Admins**.
+- Use the **Delegation of Control Wizard** to assign specific tasks to users/groups (e.g., reset passwords).
+- Allows fine-tuned delegation without giving full administrative control.
+
+### Jump Servers:
+- Hardened servers used to manage systems in different security zones.
+- Typically sit between internal and perimeter networks for added security.
+
+### Windows Admin Center:
+- Central web-based console combining many server management tools.
+- Manages:
+  - Windows Servers
+  - Failover Clusters
+  - Hyper-Converged Clusters
+  - Windows 10/11 clients
+- Couldn’t install due to VM limitations (no Hyper-V or Wi-Fi).
+
+### Server Manager:
+- GUI tool for:
+  - Managing local and remote servers
+  - Viewing event logs, services, and performance
+  - Performing best practice analyses
+- Dashboard includes options like:
+  - Add roles/features
+  - Add/manage servers
+  - Connect to cloud services
+
+### RSAT (Remote Server Administration Tools):
+- Includes:
+  - AD DS Tools
+  - DHCP, DNS Tools
+  - File Services
+  - Group Policy Management
+
+### PowerShell:
+- Command-line shell & scripting language.
+- **Cmdlets**: Single-function commands (e.g., `Get-EventLog`)
+- **Modules**: Collections of Cmdlets for specific services or features.
+- Two interfaces:
+  - **Console**: Command-line
+  - **ISE (Integrated Scripting Environment)**: GUI with scripting tools
+
+### PowerShell Remote Management:
+- Enables Cmdlets to run remotely on other Windows systems.
+
+### PowerShell vs CMD Prompt:
+| Feature             | CMD Prompt               | PowerShell                         |
+|---------------------|---------------------------|------------------------------------|
+| Basic networking    | Yes (Ping, Ipconfig)      | Yes (Test-Connection, etc.)        |
+| Disk utilities      | Yes (Diskpart)            | Yes (via Cmdlets)                  |
+| Scripting           | Limited                   | Full scripting support             |
+| Help System         | Basic                     | `Get-Help`, `-Full`, `-Examples`   |
+
+---
+
+## 2. Questions I Had
+
+- Are there any limitations to PowerShell remote management in hybrid cloud environments?
+- Can delegation permissions be audited or logged for compliance purposes?
+- What’s the ideal use case for jump servers in a modern Azure hybrid setup?
+
+---
+
+## 3. How Things Connected
+
+- The **least privilege** model aligns with **delegated permissions** to ensure only specific people manage specific resources—this ties directly into **GPOs** and **OU structure**.
+- **PowerShell** and **RSAT tools** offer remote and scriptable control of servers—fitting perfectly into real-world IAM workflows and automation.
+- **Jump servers** reinforce security best practices when connecting to domain controllers or administrative systems across network zones.
+
+---
+
+## 4. What I Need to Try Next
+
+- Practice delegation via the **Delegation of Control Wizard** in Active Directory.
+- Use **PowerShell Cmdlets** like `Get-EventLog`, `Test-Connection`, and `Get-Help`.
+- Install and explore **RSAT tools** locally (outside of the VM if needed).
+- Test remote PowerShell sessions in a homelab once networking is configured.
+
+---
+
+## 5. Real-World Application / Use Case
+
+- Least privilege and delegation help secure **enterprise IAM environments**, ensuring tighter role-based access control (RBAC).
+- **Jump servers** are often required in **government or finance sectors** for secure remote administration.
+- Admins use PowerShell to **automate user creation, group membership, log retrieval**, and much more, improving consistency and speed.
+- RSAT tools are vital for managing infrastructure **remotely**, especially in multi-site or hybrid cloud environments.
