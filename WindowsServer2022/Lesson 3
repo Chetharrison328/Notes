@@ -52,3 +52,69 @@ Module: Overview of AD DS | Workgroups vs Domains | Domain Controllers | User & 
 - Understanding **users, groups, and policies** in AD is a direct precursor to managing **cloud-based IAM tools**.
 - **Domain Controllers** are a real-world example of centralized IAM systems that mirror how modern tools like Entra, Okta, and CyberArk work.
 - These skills apply to IT support, sysadmin, security analyst, and IAM engineer roles.
+
+---
+
+
+# Lesson 3 – Active Directory (Continued)
+
+## 1. What I Learned
+
+- **Joining a Desktop Experience Server to a Domain**
+  - Watched the video, but couldn’t do the hands-on part because I’m using VirtualBox (not Hyper-V Manager).
+  - Hyper-V and VirtualBox can't be installed on the same system simultaneously.
+
+- **Joining a Core Server to the Domain**
+  - Also required Hyper-V Manager, so I wasn’t able to complete this demo.
+
+- **Organizational Units (OUs) vs Containers**
+  - **Containers**:
+    - Used to group system objects within a domain.
+    - Cannot have Group Policy Objects (GPOs) applied.
+    - Default location for new objects.
+  - **Organizational Units (OUs)**:
+    - Used to configure objects by assigning GPOs.
+    - Allow delegation of administrative permissions.
+
+- **Domain Controllers**:
+  - Host the AD DS database (`Ntds.dit`) and SYSVOL.
+  - Provide Kerberos authentication and Key Distribution Center (KDC) services.
+  - Best Practice: Use at least **two domain controllers** per domain for availability.
+
+- **Global Catalog**:
+  - Stores a **partial attribute set** for all domains in the forest.
+  - Enables **forest-wide queries**.
+  - Best Practices:
+    - In a **single domain**, configure all domain controllers as global catalog servers.
+    - In **multi-site environments**, ensure **at least one domain controller per site** is a global catalog server.
+
+---
+
+## 2. Questions I Had
+
+- Are there any workarounds or tools to simulate Hyper-V labs while using VirtualBox?
+- Can I create test OUs to mimic container behavior, or are containers only system-managed?
+
+---
+
+## 3. How Things Connected
+
+- The difference between **OUs** and **containers** helped me understand why certain GPOs might not apply as expected.
+- Seeing how domain controllers host **authentication services** tied everything back to user login and access control.
+- The **global catalog** explains how larger organizations manage seamless logins and object searches across domains.
+
+---
+
+## 4. What I Need to Try Next
+
+- Research how to simulate or practice Hyper-V-based labs on my current setup.
+- Practice creating OUs, assigning users, and applying GPOs.
+- Document the difference between default containers and custom OUs in a homelab.
+
+---
+
+## 5. Real-World Application / Use Case
+
+- IT teams use **OUs** to apply policies like password rules, desktop restrictions, or software deployments by department.
+- **Multiple domain controllers** provide fault tolerance so authentication services remain available if one server fails.
+- The **global catalog** enables fast lookups and login validations across different branches of a company.
